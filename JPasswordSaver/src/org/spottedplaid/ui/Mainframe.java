@@ -51,42 +51,89 @@ import org.spottedplaid.database.SQliteOps;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 
+// TODO: Auto-generated Javadoc
 /* ***************************************************************
 Class:    Mainframe
 Purpose:  Methods to display and manipulate database values
 ***************************************************************  */
+/**
+ * The Class Mainframe.
+ */
 public class Mainframe extends JFrame {
 
 	/// Class variables 
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/** The jtxt app. */
 	private JTextField jtxtApp;
+	
+	/** The jtxt desc. */
 	private JTextField jtxtDesc;
+	
+	/** The l_sqliteops. */
 	private SQliteOps l_sqliteops = null;
+	
+	/** The l_crypto. */
 	private Crypto    l_crypto    = null;
+    
+    /** The db rec. */
     private DbRecord dbRec = null;
+    
+    /** The jtab apps. */
     private JTable jtabApps;
+    
+    /** The i client id. */
     private int iClientId = 0;
+    
+    /** The i cred id. */
     private int iCredId   = 0;
     
+    /** The btn replace. */
     JButton btnReplace = null;
+	
+	/** The btn delete. */
 	JButton btnDelete = null;
+	
+	/** The btn search. */
 	JButton btnSearch = null;
+	
+	/** The btn clear. */
 	JButton btnClear = null;
 	
+	/** The btn cred add. */
 	JButton btnCredAdd = null;
+	
+	/** The btn cred replace. */
 	JButton btnCredReplace = null;
+	
+	/** The btn cred delete. */
 	JButton btnCredDelete = null;
+	
+	/** The btn cred clear. */
 	JButton btnCredClear = null;
+	
+	/** The btn show assoc. */
 	JButton btnShowAssoc = null;
+	
+	/** The chk del assoc. */
 	JCheckBox chkDelAssoc = new JCheckBox("Delete Associated Challenge/Responses");
 	
+	/** The jtxt chlng. */
 	private JTextField jtxtChlng;
+	
+	/** The jtxt rsp. */
 	private JTextField jtxtRsp;
+	
+	/** The jtab creds. */
 	private JTable jtabCreds;
 	
 	
 	/**
 	 * Create the frame.
+	 *
+	 * @param _Sqliteops the _ sqliteops
+	 * @param _Crypto the _ crypto
 	 */
 	public Mainframe(SQliteOps _Sqliteops, Crypto _Crypto) {
 		
@@ -96,7 +143,7 @@ public class Mainframe extends JFrame {
 		setTitle("The Password Saver - Management");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 825, 581);
+		setBounds(100, 100, 888, 581);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -579,8 +626,8 @@ public class Mainframe extends JFrame {
 	
 	
 	/**
-     * addToTable - Add new row to the JTable clients object
-     */     
+	 * addToTable - Add new row to the JTable clients object.
+	 */     
     public void addToTable()
     {
        DefaultTableModel jtabModel = (DefaultTableModel) jtabApps.getModel();
@@ -590,7 +637,7 @@ public class Mainframe extends JFrame {
     }
     
     /**
-     * addToCredsTable - Add new row to the JTable credentials object
+     * addToCredsTable - Add new row to the JTable credentials object.
      */
     public void addToCredsTable()
     {
@@ -602,7 +649,7 @@ public class Mainframe extends JFrame {
     }
     
     /**
-     * clearFields - Clear text fields associated with clients
+     * clearFields - Clear text fields associated with clients.
      */
     public void clearFields()
     {
@@ -614,7 +661,7 @@ public class Mainframe extends JFrame {
     }
     
     /**
-     * clearCredsFields - Clear text fields associated with credentials
+     * clearCredsFields - Clear text fields associated with credentials.
      */
     public void clearCredsFields()
     {
@@ -624,7 +671,7 @@ public class Mainframe extends JFrame {
     }
 
     /**
-     * enableButtons - Enable buttons for client manipulation
+     * enableButtons - Enable buttons for client manipulation.
      */
     public void enableButtons()
     {
@@ -633,7 +680,7 @@ public class Mainframe extends JFrame {
     }
     
     /**
-     * disableButtons - Disable buttons associated with client manipulation
+     * disableButtons - Disable buttons associated with client manipulation.
      */
     public void disableButtons()
     {
@@ -642,7 +689,7 @@ public class Mainframe extends JFrame {
     }
     
     /**
-     * enableCredsButtons - Enable buttons for credentials manipulation
+     * enableCredsButtons - Enable buttons for credentials manipulation.
      */
     public void enableCredsButtons()
     {
@@ -653,7 +700,7 @@ public class Mainframe extends JFrame {
     }
     
     /**
-     * disableCredsButtons - Disable buttons associated with credentials manipulation
+     * disableCredsButtons - Disable buttons associated with credentials manipulation.
      */
     public void disableCredsButtons()
     {
@@ -665,7 +712,8 @@ public class Mainframe extends JFrame {
     }
     
     /**
-     * loadTable - Loads client data
+     * loadTable - Loads client data.
+     *
      * @param _dbRec - Parameter indicating type of data to load and any associated filters
      */
     public void loadTable(DbRecord _dbRec)

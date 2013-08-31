@@ -4,6 +4,7 @@ package org.spottedplaid.crypto;
  * This software has NO WARRANTY.  It is available ÄS-IS, use at your own risk.
  * 
  * @author gary
+ * @version 1.0
  * 
  * Keyutil.java
  * (c) 2013 - Spotted Plaid Productions.

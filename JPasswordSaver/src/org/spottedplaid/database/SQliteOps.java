@@ -4,6 +4,7 @@ package org.spottedplaid.database;
  * This software has NO WARRANTY.  It is available ÄS-IS, use at your own risk.
  * 
  * @author gary
+ * @version 1.0
  * 
  * SQliteOps.java
  * (c) 2013 - Spotted Plaid Productions.
@@ -64,13 +65,12 @@ public class SQliteOps {
 			               + "CREDS.ID, CREDS.CHALLENGE, CREDS.RESPONSE "
 			               + "FROM  CREDS LEFT OUTER JOIN CLIENTS ON CREDS.CLIENT_ID = CLIENTS.ID";	
 	
-	
-	       
-	       
-	
-	/// Constructor
-	///  Takes a filename as the input and checks to see if it exists
-	///  Will attempt to create if it does not exist
+
+	/**
+	 *  Constructor
+	 *    Takes a filename as the input and checks to see if it exists
+	 *    Will attempt to create if it does not exist
+	 */
 	public SQliteOps(String _sDbFilename)
 	{
 	   try {
@@ -88,8 +88,11 @@ public class SQliteOps {
 	}
 	}
 	   
-	/// initDb
-	///   Initializes database, executed if database file does not exist
+	/** 
+	 *  initDb
+	 *     Initializes database, executed if database file does not exist
+	 */   
+	
 	public void initDb()
 	{
 		
@@ -116,8 +119,10 @@ public class SQliteOps {
 				}
 	}
 
-	/// connectToDb
-	///  Establish database connection if object is not set
+	/**
+	 *  connectToDb
+	 *    Establish database connection if object is not set
+	 */
 	public void connectToDb()
 	{
 		System.out.println("DEBUG->connectToDb, Trying filename [" + sDbFilename + "]");
@@ -135,8 +140,10 @@ public class SQliteOps {
 		
 	}
 	
-	/// closeDb
-	///  Close database connection if set
+	/**
+	 *  closeDb
+	 *    Close database connection if set
+	 */
 	public void closeDb()
 	{
 	  if (dbConn!=null)
@@ -211,16 +218,18 @@ public class SQliteOps {
 		}
 	}
 	
-	/// insertRecord
-	///   @param - DbRecord Object
-	///   @return - int value
-	///               0 - completed, did not throw exception, but did not create record
-	///              -1 - Exception encountered
-	///              >0 - completed, records inserted.
+	/** 
+	 * insertRecord
+	 *   @param - DbRecord Object
+	 *   @return - int value
+	 *               0 - completed, did not throw exception, but did not create record
+	 *              -1 - Exception encountered
+	 *              >0 - completed, records inserted.
+	 * 
+	 */
 	public int insertRecord(DbRecord dbRecord)
 	{
 
-		
 		String sInsert = null; 
 	    Statement stmtIns = null;
 	    int iReturn = 0;
@@ -276,12 +285,15 @@ public class SQliteOps {
 		return iReturn;
 	}
 
-	/// updateRecord
-	///  @param - DbRecord Object
-	///  @return - int value
-	///             0 - successful update
-	///            -1 - Unknown type
-	///            -2 - Exception executing update sql
+	/** 
+	 * updateRecord
+	 *  @param - DbRecord Object
+	 *  @return - int value
+	 *             0 - successful update
+	 *            -1 - Unknown type
+	 *            -2 - Exception executing update sql
+	 * 
+	 */
 	public int updateRecord(DbRecord dbRec)
 	{
 	  connectToDb();
@@ -316,11 +328,14 @@ public class SQliteOps {
 	  
 	}
 	
-	/// deleteRecord
-	///  @param - DbRecord
-	///  @return - int
-	///              0 = success
-	///             -1 = failed
+	/** 
+	 * deleteRecord
+	 *  @param - DbRecord
+	 *  @return - int
+	 *              0 = success
+	 *             -1 = failed
+	 * 
+	 */
 	public int deleteRecord(DbRecord dbRec)
 	{
 		Statement stmtDel = null;
@@ -378,8 +393,8 @@ public class SQliteOps {
 	
 	/**
 	 * getRecords - Fetches records from database using type defined by DbRecord
-	 * @param dbRec - Defines record type, and parameters for query
-	 * @return - ArrayList<String> of retrieved records
+	 *  @param dbRec - Defines record type, and parameters for query
+	 *  @return - ArrayList<String> of retrieved records
 	 */
 	public ArrayList<String> getRecords(DbRecord dbRec)
 	{
@@ -440,7 +455,7 @@ public class SQliteOps {
 	
 	/**
 	 * getNumRecords - Return the number of records returned from last query - not implemented
-	 * @return
+	 *  @return
 	 */
 	public int getNumRecords()
 	{

@@ -4,6 +4,7 @@ package org.spottedplaid.crypto;
  * This software has NO WARRANTY.  It is available ÄS-IS, use at your own risk.
  * 
  * @author gary
+ * @version 1.0
  * 
  * Crypto.java
  * (c) 2013 - Spotted Plaid Productions.
@@ -39,9 +40,12 @@ private Cipher dcipher;
     {
     }
        
-    /// buildAlgorithm
-    ///  @param - String algorithm type
-    ///  @param - SecretKey  value
+    /** 
+     *  buildAlgorithm - Creates a working instance of encrypt/decrypt objects
+     *   @param - String algorithm type
+     *   @param - SecretKey  value
+     * 
+     */
 	public void buildAlgorithm(String strAlg, SecretKey key) {
 		try {
 			  ecipher = Cipher.getInstance(strAlg);
@@ -57,9 +61,12 @@ private Cipher dcipher;
 			}
 		}
     
-	/// encrypt
-	///  @param - String plain text
-	///  @return - Encrypted string
+	/** 
+	 *  encrypt - Encrypts a string using the defined key
+	 *   @param - String plain text
+	 *   @return - Encrypted string
+	 * 
+	 */
 	public String encrypt(String str) {
 	    System.out.println("DEBUG->encrypt, str [" + str + "]");
 		try {
@@ -81,9 +88,12 @@ private Cipher dcipher;
 		     return null;
 		}
     
-	/// decrypt
-	///  @param - String encrypted value
-	///  @return - Plain text string
+	/** 
+	 *  decrypt - Decrypts a string using the defined key
+	 *   @param - String encrypted value
+	 *   @return - Plain text string
+	 * 
+	 */
 	public String decrypt(String str) {
 		try {
 				// Decode base64 to get bytes
@@ -111,12 +121,15 @@ private Cipher dcipher;
 		return null;
 	}
 
-	/// verifyKey
-	///  @param - String filename
-	///  @param - String password/phrase
-	///  @param - String algorithm method
-	///  @return - String
-	///              "Success" or failure message
+	/** 
+	 *  verifyKey - Validates existence of key, creates if not found.  Returns a non-success message if keystore cannot be opened
+	 *   @param - String filename
+	 *   @param - String password/phrase
+	 *   @param - String algorithm method
+	 *   @return - String
+	 *               "Success" or failure message
+	 * 
+	 */
 	public String verifyKey(String _sFilename, String _sPass, String _sMethod)
 	{
 	   File fileName = new File(_sFilename);
@@ -154,15 +167,21 @@ private Cipher dcipher;
 	   
 	}
 	
-	/// setlKey
-	///  @param - SecretKey value
+	/** 
+	 *  setlKey - Set local class variable to the key value
+	 *   @param - SecretKey value
+	 * 
+	 */
 	public void setlKey(SecretKey _sKey)
 	{
 		lKey = _sKey;
 	}
 	
-	/// getlKey
-	///  @return - private SecretKey value lKey
+	/** 
+	 *  getlKey - Return local variable containing the key value
+	 *   @return - private SecretKey value lKey
+	 * 
+	 */
 	public SecretKey getlKey()
 	{
 		return this.lKey;
