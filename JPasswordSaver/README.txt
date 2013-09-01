@@ -18,6 +18,9 @@ This software can be freely distributed.  It is not necessary, but I would appre
                                      Password            <password>
                                      Security Question   <answer>
 
+Javadoc information is also available in the "doc" directory.
+Additional information is also available via PDF - PasswordSaver.pdf, and an AVI - PasswordSaver.avi.
+
 Requirements:  
    Developed using Java 1.7
    Eclipse 4.3 (Kepler)
