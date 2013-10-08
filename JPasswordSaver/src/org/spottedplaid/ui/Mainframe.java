@@ -338,6 +338,10 @@ public class Mainframe extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if (dbRec.getType().equals(Pwdtypes.S_CREDS_TYPE) && (dbRec.getCredId() > 0))
 				{
+					dbRec.setClientId(iClientId);
+					dbRec.setCredId(iCredId);
+					dbRec.setChallenge(jtxtChlng.getText().toString());
+					dbRec.setResponse(l_crypto.encrypt(jtxtRsp.getText().toString()));
 					/// Update the record
 					if (l_sqliteops.updateRecord(dbRec)<0)
 					{
