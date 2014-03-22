@@ -50,6 +50,7 @@ import org.spottedplaid.database.DbRecord;
 import org.spottedplaid.database.SQliteOps;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
+import org.spottedplaid.ui.Changepwd;
 
 // TODO: Auto-generated Javadoc
 /* ***************************************************************
@@ -60,6 +61,11 @@ Purpose:  Methods to display and manipulate database values
  * The Class Mainframe.
  */
 public class Mainframe extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/// Class variables 
 	/** The content pane. */
@@ -157,7 +163,22 @@ public class Mainframe extends JFrame {
 				System.exit(0);
 			}
 		});
+
 		mnFile.add(mntmExit);
+		
+		JMenu mnTools = new JMenu("Tools");
+		menuBar.add(mnTools);
+		
+		JMenuItem mntmChgpwd = new JMenuItem("Change Passphrase");
+		mntmChgpwd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Changepwd changePwd = new Changepwd(l_crypto,l_sqliteops);
+				changePwd.setVisible(true);
+			}
+		});
+		
+        mnTools.add(mntmChgpwd);
+        
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

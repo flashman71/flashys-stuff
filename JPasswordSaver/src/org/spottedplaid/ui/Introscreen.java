@@ -38,6 +38,7 @@ import javax.swing.border.EmptyBorder;
 import org.spottedplaid.config.Pwdtypes;
 import org.spottedplaid.crypto.Crypto;
 import org.spottedplaid.database.SQliteOps;
+import java.awt.Font;
 
 /* ***************************************************************
 Class:    Introscreen
@@ -46,6 +47,10 @@ Purpose:  Initial screen, allows user to select the keystore and database filena
 ***************************************************************  */
 public class Introscreen extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField jtxtPass;
 	private JTextField jtxtKstore;
@@ -127,6 +132,7 @@ public class Introscreen extends JFrame {
 						     l_Sqliteops = new SQliteOps(jtxtDbfile.getText().toString());
 						     mainframe = new Mainframe(l_Sqliteops, l_Crypto);
 						     mainframe.setVisible(true);
+						     l_Crypto.setKeyfile(jtxtKstore.getText().toString());  // Set the keyfile name
 						     jtxtDbfile.setText("");
 						     jtxtPass.setText("");
 						     jtxtKstore.setText("");
@@ -172,6 +178,9 @@ public class Introscreen extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(Introscreen.class.getResource("/org/spottedplaid/ui/Copyright.jpg")));
 		
+		JLabel lblVersion = new JLabel("Version 3.1");
+		lblVersion.setFont(new Font("Square721 BT", Font.BOLD, 9));
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -180,24 +189,24 @@ public class Introscreen extends JFrame {
 					.addComponent(btnOk)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnCancel)
-					.addContainerGap(183, Short.MAX_VALUE))
+					.addContainerGap(189, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(64)
 					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(70, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(32)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 							.addGroup(gl_contentPane.createSequentialGroup()
 								.addComponent(btnDatabaseFile)
 								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(jtxtDbfile, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
+								.addComponent(jtxtDbfile, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
 							.addGroup(gl_contentPane.createSequentialGroup()
 								.addComponent(btnKstore)
 								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(jtxtKstore, GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)))
-						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+								.addComponent(jtxtKstore, GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(9)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 365, GroupLayout.PREFERRED_SIZE)
@@ -206,6 +215,10 @@ public class Introscreen extends JFrame {
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addComponent(jtxtPass, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE)))))
 					.addGap(28))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(172)
+					.addComponent(lblVersion)
+					.addContainerGap(216, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -214,7 +227,9 @@ public class Introscreen extends JFrame {
 					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 195, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+					.addGap(18)
+					.addComponent(lblVersion)
+					.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPassCode)
 						.addComponent(jtxtPass, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -250,5 +265,4 @@ public class Introscreen extends JFrame {
 		
 		contentPane.setLayout(gl_contentPane);
 	}
-
 }
