@@ -1,0 +1,6 @@
+org.eclipse.wb.swing
+org.spottedplaid.config
+org.spottedplaid.crypto
+org.spottedplaid.database
+org.spottedplaid.database.constants
+org.spottedplaid.ui
