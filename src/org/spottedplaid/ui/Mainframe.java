@@ -129,6 +129,9 @@ public class Mainframe extends JFrame {
 	/** The btn cred clear. */
 	JButton btnCredClear = null;
 	
+	/** The btn edit  */
+	JButton btnEdit = null;
+	
 	/** The btn show assoc. */
 	JButton btnShowAssoc = null;
 	
@@ -621,6 +624,7 @@ public class Mainframe extends JFrame {
 		btnCredClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				clearCredsFields();
+				enableCredsButtons();
 			}
 		});
 				
@@ -661,6 +665,18 @@ public class Mainframe extends JFrame {
 		jcbTrack.addItem("365");
 		jcbTrack.setSelectedItem("0");
 		
+	    btnEdit = new JButton("Edit");
+	    btnEdit.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent arg0) {
+	    		jtxtChlng.setEnabled(true);
+	    		jtxtRsp.setEnabled(true);
+	    		jcbTrack.setEnabled(true);
+	    		btnCredReplace.setEnabled(true);
+	    		btnCredAdd.setEnabled(true);
+	    	}
+	    });
+		btnEdit.setEnabled(false);
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -693,12 +709,10 @@ public class Mainframe extends JFrame {
 												.addComponent(jtxtApp, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
 												.addComponent(jtxtDesc, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE)))
 										.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 355, GroupLayout.PREFERRED_SIZE))
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+									.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+										.addComponent(btnShowAssoc)
 										.addGroup(gl_contentPane.createSequentialGroup()
-											.addGap(118)
-											.addComponent(btnShowAssoc))
-										.addGroup(gl_contentPane.createSequentialGroup()
-											.addGap(18)
 											.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 												.addComponent(lblResponse)
 												.addComponent(lblChallenge))
@@ -711,22 +725,22 @@ public class Mainframe extends JFrame {
 													.addPreferredGap(ComponentPlacement.UNRELATED)
 													.addComponent(jcbTrack, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))
 												.addComponent(jtxtChlng, GroupLayout.PREFERRED_SIZE, 440, GroupLayout.PREFERRED_SIZE)))
-										.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-											.addPreferredGap(ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addGroup(gl_contentPane.createSequentialGroup()
-													.addComponent(btnCredAdd, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
-													.addPreferredGap(ComponentPlacement.RELATED)
-													.addComponent(btnCredReplace)
-													.addPreferredGap(ComponentPlacement.RELATED)
-													.addComponent(btnCredDelete, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-													.addPreferredGap(ComponentPlacement.UNRELATED)
-													.addComponent(btnCredClear))
-												.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))))
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+											.addGroup(gl_contentPane.createSequentialGroup()
+												.addComponent(btnCredAdd, GroupLayout.PREFERRED_SIZE, 78, GroupLayout.PREFERRED_SIZE)
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(btnCredReplace)
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(btnCredDelete, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+												.addPreferredGap(ComponentPlacement.UNRELATED)
+												.addComponent(btnCredClear)
+												.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+												.addComponent(btnEdit))
+											.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(36)
 							.addComponent(chkDelAssoc)))
-					.addContainerGap(65, Short.MAX_VALUE))
+					.addContainerGap(57, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -762,7 +776,8 @@ public class Mainframe extends JFrame {
 						.addComponent(btnCredAdd)
 						.addComponent(btnCredReplace)
 						.addComponent(btnCredDelete)
-						.addComponent(btnCredClear))
+						.addComponent(btnCredClear)
+						.addComponent(btnEdit))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
@@ -876,12 +891,24 @@ public class Mainframe extends JFrame {
                    jtxtChlng.setText(jtabCreds.getValueAt(iRow,1).toString());
                    jtxtRsp.setText(l_crypto.decrypt(jtabCreds.getValueAt(iRow, 2).toString()));            
                    jcbTrack.setSelectedItem(jtabCreds.getValueAt(iRow, 3).toString());
+                   if (null==jtabCreds.getValueAt(iRow, 4))
+                   {
+                	   sDateModified = "";
+                   }
+                   else
+                   {
                    sDateModified = jtabCreds.getValueAt(iRow, 4).toString();
+                   }
                    sChallenge = jtxtChlng.getText();
                    sResponse  = jtxtRsp.getText();
                      dbRec.setType(Pwdtypes.S_CREDS_TYPE);
                      dbRec.setCredId(iClientId);
+                     jtxtChlng.setEnabled(false);
+                     jtxtRsp.setEnabled(false);
+                     jcbTrack.setEnabled(false);
+                      btnEdit.setEnabled(true);
                       btnCredDelete.setEnabled(true);
+                      btnCredClear.setEnabled(true);
                  }
             }
     });
@@ -933,8 +960,12 @@ public class Mainframe extends JFrame {
     public void clearCredsFields()
     {
     	jtxtChlng.setText("");
+        jtxtChlng.setEnabled(true);
     	jtxtRsp.setText("");
+    	jtxtRsp.setEnabled(true);
+    	btnEdit.setEnabled(false);
     	jcbTrack.setSelectedItem("0");
+    	jcbTrack.setEnabled(true);
     	disableCredsButtons();
     }
 

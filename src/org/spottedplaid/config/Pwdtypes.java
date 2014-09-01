@@ -20,7 +20,7 @@ Purpose:  Constants defined for use with other classes in the Password Saver pro
 public class Pwdtypes {
 
 	/// Application Version
-	public final static String S_VERSION = "Version 3.2";
+	public final static String S_VERSION = "Version 3.3";
 	
 	/// Encryption method
 	public final static String S_METHOD = "Blowfish";
