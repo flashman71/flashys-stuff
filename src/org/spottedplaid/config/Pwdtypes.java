@@ -20,7 +20,7 @@ Purpose:  Constants defined for use with other classes in the Password Saver pro
 public class Pwdtypes {
 
 	/// Application Version
-	public final static String S_VERSION = "Version 3.3";
+	public final static String S_VERSION = "Version 3.4";
 	
 	/// Encryption method
 	public final static String S_METHOD = "Blowfish";
@@ -32,7 +32,7 @@ public class Pwdtypes {
 	public final static String S_CREDS_TYPE = "creds";
 	
 	/// Constant to indicate all records
-	public final static String S_ALL_TYPE = "all";
+	public final static String S_ALL_TYPE = "all_clients_creds";
 	
 	/// Constant for log table
 	public final static String S_LOG_TYPE = "logs";
@@ -52,6 +52,8 @@ public class Pwdtypes {
 	/// Constant for default database filename
 	private static String sDbfilename = "jpwdsaver.dbx";
 	
+	/// Constant for full report
+	private static String S_REPORT_FULLNAME = "";
 	/**
 	 * setKstore - Setter method for Keystore, not used at this time
 	 * @param _sKstore

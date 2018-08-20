@@ -167,7 +167,6 @@ public class SQliteOps {
 			   while (rs.next())
 			   {
 				   blReturn = rs.getBlob("key");
-				    System.out.println("DEBUG->getKey, return key [" + blReturn.toString() + "]");
 			   }
 		}
 		catch (SQLException e)
@@ -229,7 +228,6 @@ public class SQliteOps {
 			 while (rs.next())
 			 {
 				 iReturn = rs.getInt("last_insert_rowid()");
-				 System.out.println("DEBUG->insertRecord, found rs [" + iReturn + "]");
 				 return iReturn; 
 				  
 			 }
@@ -413,6 +411,11 @@ public class SQliteOps {
 		{
 			sQry = "select * from " + dbRec.getType() + " order by date_changed desc";
 		}
+		else if (dbRec.getType().equals(Pwdtypes.S_ALL_TYPE))
+		{
+			sQry = "select * from " + dbRec.getType() + " order by CLIENT_NAME ASC";
+		}
+		
 
 		try {
 			  stmtData = dbConn.createStatement();
@@ -424,6 +427,11 @@ public class SQliteOps {
 				   if (dbRec.getType().equals(Pwdtypes.S_EXP_RPT))
 				   {
 					   sData = rs.getString(1) + "|" + rs.getString(2) + "|" +  rs.getString(3);
+				   }
+				   /// S_ALL_TYPE will get all URLs/Applications and Credential challenge/response values
+				   else if (dbRec.getType().equals(Pwdtypes.S_ALL_TYPE))
+				   {
+					   sData = rs.getInt(1) + "|" + rs.getString(2) + "|" +  rs.getString(3) + "|" +  rs.getString(4) + "|" +  rs.getString(5) + "|" +  rs.getString(6);  
 				   }
 				   else
 				   {
@@ -507,18 +515,13 @@ public class SQliteOps {
 				connectToDb();	
 	          	Statement stmtUpd;
 					  stmtUpd = dbConn.createStatement();
-		   System.out.println("DEBUG->initDb, Creating UPD0 [" + DbConstant.S_UPD0 + "]");
 		               stmtUpd.executeUpdate(DbConstant.S_UPD0);
-   		   System.out.println("DEBUG->initDb, Creating UPD1 [" + DbConstant.S_UPD1 + "]");
-		               stmtUpd.executeUpdate(DbConstant.S_UPD1);
-		   System.out.println("DEBUG->initDb, Creating table [" + DbConstant.S_CREDS_TABLE + "]");			  
+		               stmtUpd.executeUpdate(DbConstant.S_UPD1);			  
 					   stmtUpd.executeUpdate(DbConstant.S_CREDS_TABLE);
-		   System.out.println("DEBUG->initDb, Creating UPD2 [" + DbConstant.S_UPD2 + "]");
 		               stmtUpd.executeUpdate(DbConstant.S_UPD2);		               
-		   System.out.println("DEBUG->initDb, Updating UPD3 [" + DbConstant.S_UPD3 + "]");
 		               stmtUpd.executeUpdate(DbConstant.S_UPD3);		           
-		   System.out.println("DEBUG->initDb, Creating UPD4 [" + DbConstant.S_UPD4 + "]");
 		               stmtUpd.executeUpdate(DbConstant.S_UPD4);
+
 		           String sUpd = "insert into app_db(db_rev,app_rev) values(\"" + DbConstant.S_DB_REV + "\", \"" + DbConstant.S_APP_REV + "\")";
 		           stmtUpd.execute(sUpd);
 		  }

@@ -21,10 +21,10 @@ Purpose:  Constants used by database operations
 public class DbConstant {
 	
 	/// Database Version
-	public final static String S_DB_REV = "1";
+	public final static String S_DB_REV = "4";
 	
 	/// Application Version
-	public final static String S_APP_REV = "1";
+	public final static String S_APP_REV = "4";
 	
 	/// Constants
 	///   clients table
