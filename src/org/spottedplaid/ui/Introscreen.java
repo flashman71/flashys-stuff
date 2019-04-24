@@ -81,7 +81,7 @@ public class Introscreen extends JFrame {
 	public Introscreen() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 560);
+		setBounds(100, 100, 468, 560);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
@@ -178,8 +178,11 @@ public class Introscreen extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(Introscreen.class.getResource("/org/spottedplaid/ui/Copyright.jpg")));
 		
-		JLabel lblVersion = new JLabel(Pwdtypes.S_VERSION);
+		JLabel lblVersion = new JLabel("Version 4.0");
 		lblVersion.setFont(new Font("Square721 BT", Font.BOLD, 9));
+		
+		JLabel lblMain = new JLabel("The Password Saver");
+		lblMain.setFont(new Font("Segoe Script", Font.BOLD, 14));
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -189,11 +192,7 @@ public class Introscreen extends JFrame {
 					.addComponent(btnOk)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnCancel)
-					.addContainerGap(189, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(64)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 300, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(70, Short.MAX_VALUE))
+					.addContainerGap(207, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(32)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -201,35 +200,44 @@ public class Introscreen extends JFrame {
 							.addGroup(gl_contentPane.createSequentialGroup()
 								.addComponent(btnDatabaseFile)
 								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(jtxtDbfile, GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
+								.addComponent(jtxtDbfile, GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
 							.addGroup(gl_contentPane.createSequentialGroup()
 								.addComponent(btnKstore)
 								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(jtxtKstore, GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)))
+								.addComponent(jtxtKstore, GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(9)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 365, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(lblPassCode)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(jtxtPass, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE)))))
+							.addComponent(lblPassCode)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(jtxtPass, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE)
+							.addGap(29)))
 					.addGap(28))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(172)
 					.addComponent(lblVersion)
-					.addContainerGap(216, Short.MAX_VALUE))
+					.addContainerGap(230, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addContainerGap())
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(143)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblMain, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel))
+					.addContainerGap(149, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 195, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(35)
+					.addComponent(lblMain)
+					.addGap(18)
+					.addComponent(lblNewLabel)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(lblVersion)
-					.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPassCode)
 						.addComponent(jtxtPass, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
