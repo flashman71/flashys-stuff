@@ -47,7 +47,6 @@ public class Keyutil {
 		SecretKey sk = null;
 		File fKeyFile = new File(_sFilename);			
 		
-		System.out.println("DEBUG->getKeyFromFile...");
 		 if (fKeyFile.exists())
 		 {
 			 try {
@@ -118,7 +117,7 @@ public class Keyutil {
 			System.out.println("createKeyFile CertificateException [" + e.getMessage() + "]");
 			 return -3;
 		} catch (IOException e) {
-			System.out.println("DEBUG->IOException [" + e.getMessage() + "]");
+			System.out.println("EXCEPTION->IOException [" + e.getMessage() + "]");
 			 return -4;
 		}
  finally {

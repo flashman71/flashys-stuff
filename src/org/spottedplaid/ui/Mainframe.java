@@ -748,9 +748,7 @@ public class Mainframe extends JFrame {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println("DEBUG->loadTable Exception [" + e.getMessage()
-					+ "]");
-			e.printStackTrace();
+			System.out.println("Exception->loadTable Exception [" + e.getMessage()	+ "]");
 		}
 	}
 }

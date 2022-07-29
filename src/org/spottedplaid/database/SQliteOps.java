@@ -53,7 +53,6 @@ public class SQliteOps {
 		fileDb = new File(sDbFilename);
 	   if (!fileDb.exists())
 	   {
-		   System.out.println("DEBUG->File [" + sDbFilename + "] does not exist...creating database");
 		   initDb();
 	   }
 	   else
@@ -66,8 +65,7 @@ public class SQliteOps {
 
 	   }
 	} catch (ClassNotFoundException e) {
-		System.out.println("DEBUG->SQliteOps ClassNotFoundException [" + e.getMessage() + "]");
-		e.printStackTrace();
+		System.out.println("EXCEPTION->SQliteOps ClassNotFoundException [" + e.getMessage() + "]");
 	}
 	}
 	   
@@ -77,26 +75,18 @@ public class SQliteOps {
 	 */  
 	public void initDb()
 	{
-		
-   System.out.println("DEBUG->initDb - Creating database [" + this.sDbFilename + "]");			
+				
 	          	connectToDb();	
 	          	Statement stmtInit;
 				try {
 					  stmtInit = dbConn.createStatement();
-		   System.out.println("DEBUG->initDb, Creating table [" + DbConstant.S_CLIENT_TABLE + "]");
-			           stmtInit.executeUpdate(DbConstant.S_CLIENT_TABLE);		  
-		   System.out.println("DEBUG->initDb, Creating table [" + DbConstant.S_CREDS_TABLE + "]");			  
-					   stmtInit.executeUpdate(DbConstant.S_CREDS_TABLE);
-		   System.out.println("DEBUG->initDb, Creating index [" + DbConstant.S_CLIENT_IDX1 + "]");			  
-		               stmtInit.executeUpdate(DbConstant.S_CLIENT_IDX1);
-		   System.out.println("DEBUG->initDb, Creating view [" + DbConstant.S_VIEW1 + "]");
-		               stmtInit.executeUpdate(DbConstant.S_VIEW1);
-		   System.out.println("DEBUG->initDb, Creating table [" + DbConstant.S_LOG_TABLE + "]");
-		               stmtInit.executeUpdate(DbConstant.S_LOG_TABLE);
-  		   System.out.println("DEBUG->initDb, Creating table [" + DbConstant.S_APP_DB_TABLE + "]");
-		               stmtInit.executeUpdate(DbConstant.S_APP_DB_TABLE);		               
-   		   System.out.println("DEBUG->initDb, Creating table [" + DbConstant.S_VIEW2 + "]");
-		               stmtInit.executeUpdate(DbConstant.S_VIEW2);		               
+			          stmtInit.executeUpdate(DbConstant.S_CLIENT_TABLE);		  
+		              stmtInit.executeUpdate(DbConstant.S_CREDS_TABLE);
+		              stmtInit.executeUpdate(DbConstant.S_CLIENT_IDX1);
+		              stmtInit.executeUpdate(DbConstant.S_VIEW1);
+		              stmtInit.executeUpdate(DbConstant.S_LOG_TABLE);
+  	                  stmtInit.executeUpdate(DbConstant.S_APP_DB_TABLE);		               
+   		              stmtInit.executeUpdate(DbConstant.S_VIEW2);		               
 		   
 		   /// Update version control table
 		   String sUpd = "insert into app_db(db_rev,app_rev) values(\"" + DbConstant.S_DB_REV + "\", \"" + DbConstant.S_APP_REV + "\")";
@@ -114,7 +104,6 @@ public class SQliteOps {
 	 */
 	public void connectToDb()
 	{
-		System.out.println("DEBUG->connectToDb, Trying filename [" + sDbFilename + "]");
 		String sConn = "jdbc:sqlite:" + sDbFilename;
 		
 		try {
@@ -124,7 +113,7 @@ public class SQliteOps {
 			dbConn = DriverManager.getConnection(sConn);
 		}
 		} catch (SQLException e) {
-			System.out.println("DEBUG->connectToDb SQLException [" + e.getMessage() + "]");
+			System.out.println("EXCEPTION->connectToDb SQLException [" + e.getMessage() + "]");
 		}
 		
 	}
@@ -159,7 +148,6 @@ public class SQliteOps {
 		String    sGetkey = "select key from keys wheren active = 1";
 		Blob    blReturn = null;
 		Statement stmtKey = null;
-		System.out.println("DEBUG->getKey, Retrieving key from database");
 		try {
 			  stmtKey = dbConn.createStatement();
 			  stmtKey.execute(sGetkey);
@@ -171,8 +159,7 @@ public class SQliteOps {
 		}
 		catch (SQLException e)
 		{
-			System.out.println("DEBUG->getKey, SQLException [" + e.getMessage() + "]");
-			e.printStackTrace();
+			System.out.println("EXCEPTION->getKey, SQLException [" + e.getMessage() + "]");
 			return null;
 		}
 		finally 
@@ -279,7 +266,6 @@ public class SQliteOps {
 	  else
 	  {
 		  dbRec.setResult("updateRecord, unknown type [" + dbRec.getType() + "]");
-		  System.out.println("DEBUG->updateRecord, unknown type [" + dbRec.getType() + "]");
 		  return -1;
 	  }
 	  
@@ -449,7 +435,7 @@ public class SQliteOps {
 		}
 		catch (SQLException e)
 		{
-			System.out.println("DEBUG->getRecords SQLException [" + e.getMessage() + "], sql statement [" + sQry + "]");
+			System.out.println("EXCEPTION->getRecords SQLException [" + e.getMessage() + "], sql statement [" + sQry + "]");
 		}
 		finally
 		{
