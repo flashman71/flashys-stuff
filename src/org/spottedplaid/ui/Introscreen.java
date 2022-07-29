@@ -125,7 +125,6 @@ public class Introscreen extends JFrame {
 		final JButton btnOk = new JButton("Ok");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.out.println("DEBUG->Using Kstore [" + jtxtKstore.getText().toString() + "], Dbfile [" + jtxtDbfile.getText().toString() +"]");
 				if (l_Crypto.verifyKey(jtxtKstore.getText().toString(), jtxtPass.getText().toString(),Pwdtypes.S_METHOD).equals("Success"))
 					{
 					   try {
@@ -157,7 +156,6 @@ public class Introscreen extends JFrame {
 		JButton btnCancel = new JButton("Close");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				 System.out.println("DEBUG->Cancel, closing application");
 				 System.exit(0);
 			}
 		});
@@ -178,7 +176,7 @@ public class Introscreen extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(Introscreen.class.getResource("/org/spottedplaid/ui/Copyright.jpg")));
 		
-		JLabel lblVersion = new JLabel("Version 4.0");
+		JLabel lblVersion = new JLabel("Version 4.1");
 		lblVersion.setFont(new Font("Square721 BT", Font.BOLD, 9));
 		
 		JLabel lblMain = new JLabel("The Password Saver");

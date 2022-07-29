@@ -55,11 +55,11 @@ private String sKeyfile = "";
 			  ecipher.init(Cipher.ENCRYPT_MODE, key);
 			  dcipher.init(Cipher.DECRYPT_MODE, key);
 			} catch (javax.crypto.NoSuchPaddingException e) {
-			    System.out.println("DEBUG->DesEncrypter(1)-> " + e.getMessage());
+			    System.out.println("EXCEPTION->DesEncrypter(1)-> " + e.getMessage());
 			} catch (java.security.NoSuchAlgorithmException e) {
-				System.out.println("DEBUG->DesEncrypter(2)-> " + e.getMessage());
+				System.out.println("EXCEPTION->DesEncrypter(2)-> " + e.getMessage());
 			} catch (java.security.InvalidKeyException e) {
-				System.out.println("DEBUG->DesEncrypter(3)-> " + e.getMessage());
+				System.out.println("EXCEPTION->DesEncrypter(3)-> " + e.getMessage());
 			}
 		}
     
@@ -70,7 +70,6 @@ private String sKeyfile = "";
 	 * 
 	 */
 	public String encrypt(String str) {
-	    System.out.println("DEBUG->encrypt, str [" + str + "]");
 		try {
 				// Encode the string into bytes using utf-8
 			  byte[] utf8 = str.getBytes("UTF8");
@@ -81,11 +80,11 @@ private String sKeyfile = "";
 			  return javax.xml.bind.DatatypeConverter.printBase64Binary(enc);
 			     
 			} catch (javax.crypto.BadPaddingException e) {
-				System.out.println("DEBUG->encrypt Exception(1)-> " + e.getMessage());
+				System.out.println("EXCEPTION->encrypt Exception(1)-> " + e.getMessage());
 			} catch (IllegalBlockSizeException e) {
-				System.out.println("DEBUG->encrypt Exception(2)-> " + e.getMessage());
+				System.out.println("EXCEPTION->encrypt Exception(2)-> " + e.getMessage());
 			} catch (UnsupportedEncodingException e) {
-				System.out.println("DEBUG->encrypt Exception(3)-> " + e.getMessage());
+				System.out.println("EXCEPTION->encrypt Exception(3)-> " + e.getMessage());
 			} 
 		     return null;
 		}
@@ -104,7 +103,7 @@ private String sKeyfile = "";
 				// Decrypt
 			  if (dcipher==null)
 			  {
-				  System.out.println("DEBUG,decrypt, dcipher is null...wtf?!?");
+				  System.out.println("Failed,decrypt, dcipher is null...wtf?!?");
 				   return null;
 			  }
 			  byte[] utf8 = dcipher.doFinal(dec);
@@ -112,13 +111,13 @@ private String sKeyfile = "";
 				// Decode using utf-8
 				  return new String(utf8, "UTF8");
 			} catch (javax.crypto.BadPaddingException e) {
-				System.out.println("DEBUG->decrypt Exception(1)-> " + e.getMessage());
+				System.out.println("EXCEPTION->decrypt Exception(1)-> " + e.getMessage());
 			} catch (IllegalBlockSizeException e) {
-				System.out.println("DEBUG->decrypt Exception(2)-> " + e.getMessage());
+				System.out.println("EXCEPTION->decrypt Exception(2)-> " + e.getMessage());
 			} catch (UnsupportedEncodingException e) {
-				System.out.println("DEBUG->decrypt Exception(3)-> " + e.getMessage());
+				System.out.println("EXCEPTION->decrypt Exception(3)-> " + e.getMessage());
 			} catch (Exception e) {
-				  System.out.println("DEBUG->decrypt Exception(5)->Algorithms may not match-> " + e.getMessage());
+				  System.out.println("EXCEPTION->decrypt Exception(5)->Algorithms may not match-> " + e.getMessage());
 		}
 		return null;
 	}
@@ -154,8 +153,7 @@ private String sKeyfile = "";
 			key = KeyGenerator.getInstance(_sMethod).generateKey();
 			Keyutil.createKeyFile(_sFilename, key, _sPass);
 		} catch (NoSuchAlgorithmException e) {
-			System.out.println("DEBUG->verifyKey, Exception [" + e.getMessage() + "]");
-			e.printStackTrace();
+			System.out.println("EXCEPTION->verifyKey, Exception [" + e.getMessage() + "]");
 			 return "Failed to create key [" + e.getMessage() + "]";
 		}
 	       lKey = key;
