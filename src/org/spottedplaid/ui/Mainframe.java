@@ -1,7 +1,7 @@
 package org.spottedplaid.ui;
 
 /**
- * This software has NO WARRANTY.  It is available ÄS-IS, use at your own risk.
+ * This software has NO WARRANTY.  It is available ï¿½S-IS, use at your own risk.
  * 
  * @author gary
  * 
@@ -15,6 +15,7 @@ package org.spottedplaid.ui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dialog.ModalExclusionType;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -54,7 +55,6 @@ import org.spottedplaid.config.Pwdtypes;
 import org.spottedplaid.crypto.Crypto;
 import org.spottedplaid.database.DbRecord;
 import org.spottedplaid.database.SQliteOps;
-import java.awt.Dialog.ModalExclusionType;
 
 /* ***************************************************************
  Class:    Mainframe
@@ -204,6 +204,9 @@ public class Mainframe extends JFrame {
 							buffWriter.write("\n");
 						}
 						buffWriter.close();
+
+						JOptionPane.showMessageDialog(null, "Data exported in EXCEL format successfully", 
+                                "Process Complete", JOptionPane.INFORMATION_MESSAGE);
 					} catch (IOException ie) {
 						System.out
 								.println("Full Excel/CSV Report IO Exception ["
@@ -276,6 +279,10 @@ public class Mainframe extends JFrame {
 						}
 						buffWriter.write("] }");
 						buffWriter.close();
+						
+						JOptionPane.showMessageDialog(null, "Data exported in JSON format successfully", 
+                                "Process Complete", JOptionPane.INFORMATION_MESSAGE);
+
 					} catch (IOException ie) {
 						System.out
 								.println("Full JSON Report IO Exception ["
@@ -344,6 +351,9 @@ public class Mainframe extends JFrame {
 							buffWriter.write("\n");
 						}
 						buffWriter.close();
+
+						JOptionPane.showMessageDialog(null, "Expiration report output successfully", 
+                                "Process Complete", JOptionPane.INFORMATION_MESSAGE);
 
 						// / Opens WordPad on Windows systems. This could be
 						// changed to use a property in order to work on a
@@ -619,9 +629,15 @@ public class Mainframe extends JFrame {
 				0)));
 		jtabApps.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { "ID", "URL/Application", "Description" }) {
+			/**
+					 * 
+					 */
+					private static final long serialVersionUID = -1828140578609749142L;
+			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] { Integer.class, String.class,
 					String.class };
 
+			@SuppressWarnings({ "rawtypes", "unchecked" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}

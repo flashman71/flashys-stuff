@@ -1,7 +1,7 @@
 package org.spottedplaid.database;
 
 /**
- * This software has NO WARRANTY.  It is available ÄS-IS, use at your own risk.
+ * This software has NO WARRANTY.  It is available ï¿½S-IS, use at your own risk.
  * 
  * @author gary
  * @version 1.0
@@ -395,7 +395,7 @@ public class SQliteOps {
 		}
 		else if (dbRec.getType().equals(Pwdtypes.S_LOG_TYPE))
 		{
-			sQry = "select * from " + dbRec.getType() + " order by date_changed desc";
+			sQry = "select * from " + dbRec.getType() + " order by date_changed ASC";
 		}
 		else if (dbRec.getType().equals(Pwdtypes.S_ALL_TYPE))
 		{

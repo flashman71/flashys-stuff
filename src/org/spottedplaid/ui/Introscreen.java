@@ -1,7 +1,7 @@
 package org.spottedplaid.ui;
 
 /**
- * This software has NO WARRANTY.  It is available ÄS-IS, use at your own risk.
+ * This software has NO WARRANTY.  It is available ï¿½S-IS, use at your own risk.
  * 
  * @author gary
  * @version 1.0
@@ -97,7 +97,7 @@ public class Introscreen extends JFrame {
 		JButton btnKstore = new JButton("Keystore File");
 		btnKstore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser jfcKstore = new JFileChooser();
+				JFileChooser jfcKstore = new JFileChooser(new File("."));
                   int iRet = jfcKstore.showOpenDialog(Introscreen.this);
                   if (iRet==JFileChooser.APPROVE_OPTION)
                   {
@@ -111,7 +111,7 @@ public class Introscreen extends JFrame {
 		JButton btnDatabaseFile = new JButton("Database File");
 		btnDatabaseFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser jfcKstore = new JFileChooser();
+				JFileChooser jfcKstore = new JFileChooser(new File("."));
                 int iRet = jfcKstore.showOpenDialog(Introscreen.this);
                 if (iRet==JFileChooser.APPROVE_OPTION)
                 {
@@ -220,7 +220,7 @@ public class Introscreen extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(143)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblMain, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblMain, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel))
 					.addContainerGap(149, Short.MAX_VALUE))
 		);

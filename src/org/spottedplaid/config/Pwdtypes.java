@@ -1,7 +1,7 @@
 package org.spottedplaid.config;
 
 /**
- * This software has NO WARRANTY.  It is available ÄS-IS, use at your own risk.
+ * This software has NO WARRANTY.  It is available ï¿½S-IS, use at your own risk.
  * 
  * @author gary
  * 
@@ -52,8 +52,6 @@ public class Pwdtypes {
 	/// Constant for default database filename
 	private static String sDbfilename = "jpwdsaver.dbx";
 	
-	/// Constant for full report
-	private static String S_REPORT_FULLNAME = "";
 	/**
 	 * setKstore - Setter method for Keystore, not used at this time
 	 * @param _sKstore
