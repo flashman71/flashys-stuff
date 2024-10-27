@@ -1,7 +1,7 @@
 package org.spottedplaid.ui;
 
 /**
- * This software has NO WARRANTY.  It is available ÄS-IS, use at your own risk.
+ * This software has NO WARRANTY.  It is available ï¿½S-IS, use at your own risk.
  * 
  * @author gary
  * @version 1.0
@@ -65,7 +65,7 @@ public class Changepwd extends JFrame {
 	 */
 	public Changepwd(Crypto _lCrypto, SQliteOps _sqliteOps) {
 		setTitle("Change Passphrase");
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 550, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -180,7 +180,7 @@ public class Changepwd extends JFrame {
 					.addGap(23)
 					.addComponent(lblNewPassphrase)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(jtxtNewpwd, GroupLayout.PREFERRED_SIZE, 292, GroupLayout.PREFERRED_SIZE)
+					.addComponent(jtxtNewpwd, GroupLayout.PREFERRED_SIZE, 332, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(26, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
